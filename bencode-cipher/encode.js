@@ -6,6 +6,10 @@ function encodeString(data) {
   return `${data.length}:${data}`;
 }
 
+function encodeList(data) {
+  return 'le';
+}
+
 function encode(data) {
   if (typeof data === 'number') {
     return encodeInteger(data);
@@ -13,6 +17,10 @@ function encode(data) {
 
   if (typeof data === 'string') {
     return encodeString(data);
+  }
+
+  if (typeof data === 'object') {
+    return encodeList(data);
   }
 }
 
@@ -51,11 +59,18 @@ function testAllIntegerEncode() {
 
 function testAllStringEncode() {
   testEncode('Empty String', '', '0:');
+  testEncode('Single char string', 'a', '1:a');
+  testEncode('Multiple char string', 'abc', '3:abc');
+}
+
+function testAllListEncode() {
+  testEncode('Empty List', [], 'le');
 }
 
 function testAllEncodeCases() {
   //testAllIntegerEncode();
-  testAllStringEncode();
+  //testAllStringEncode();
+  testAllListEncode();
 }
 
 testAllEncodeCases();
