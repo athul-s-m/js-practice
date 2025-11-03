@@ -1,5 +1,5 @@
 function encode(data) {
-  return 'i0e';
+  return `i${data}e`;
 }
 
 function consoleMessage(message, isPass) {
@@ -25,6 +25,9 @@ function testEncode(message, data, expectedOutput) {
   }
 }
 
-function testAllEncode() {
+function testAllEncodeCases() {
   testEncode('Zero', 0, 'i0e');
+  testEncode('Positive integer', 4, 'i4e');
 }
+
+testAllEncodeCases()
