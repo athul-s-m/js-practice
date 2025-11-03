@@ -28,6 +28,8 @@ function testEncode(message, data, expectedOutput) {
 function testAllEncodeCases() {
   testEncode('Zero', 0, 'i0e');
   testEncode('Positive integer', 4, 'i4e');
+  testEncode('Negative integer', -2, 'i-2e');
+
 }
 
-testAllEncodeCases()
+testAllEncodeCases();
