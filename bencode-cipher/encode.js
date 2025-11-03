@@ -17,16 +17,13 @@ function encodeList(data) {
 }
 
 function encode(data) {
-  if (typeof data === 'number') {
-    return encodeInteger(data);
-  }
-
-  if (typeof data === 'string') {
-    return encodeString(data);
-  }
-
-  if (typeof data === 'object') {
-    return encodeList(data);
+  switch (typeof data) {
+    case 'number':
+      return encodeInteger(data);
+    case 'string':
+      return encodeString(data);
+    case 'object':
+      return encodeList(data);
   }
 }
 
